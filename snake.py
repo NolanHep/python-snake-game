@@ -92,8 +92,6 @@ while running:
         if (snake_y > screen_height):
             snake_y = 0
         snake_postions.insert(0, (snake_x, snake_y + snake_size))
-    else:
-        pass
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -119,6 +117,4 @@ while running:
 
     pygame.display.flip()
 
-    clock.tick(snake_speed) 
-
-#pygame.quit()
+    clock.tick(snake_speed)
