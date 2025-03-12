@@ -14,10 +14,11 @@ pygame.display.set_icon(icon)
 font = pygame.font.Font("./upheavtt.ttf", 30)
 
 snake_size = 20
+snake_speed = 5
 snake_x = screen_width // 2
 snake_y = screen_height // 2
-snake_length = 11
-snake_postions = [(snake_x, snake_y), (snake_x + 20, snake_y ), (snake_x + 40, snake_y), (snake_x + 60, snake_y), (snake_x + 80, snake_y), (snake_x + 100, snake_y), (snake_x + 120, snake_y ), (snake_x + 140, snake_y), (snake_x + 160, snake_y), (snake_x + 180, snake_y), (snake_x + 200, snake_y)]
+snake_length = 1
+snake_postions = [(snake_x, snake_y)]
 snake_direction = None
 
 def random_location():
@@ -33,6 +34,9 @@ while running:
 
     screen.fill((0, 0, 0))
 
+    # Increase the speed of the snake as it gets longer
+    snake_speed = max((snake_length * 5) / 7, 5)
+
     if len(snake_postions) > snake_length:
         snake_postions.pop()
 
@@ -47,7 +51,7 @@ while running:
 
         running = False
 
-        pygame.time.wait(3000)  
+        pygame.time.wait(2000)  
 
         snake_size = 20
         snake_x = screen_width // 2
@@ -115,6 +119,6 @@ while running:
 
     pygame.display.flip()
 
-    clock.tick(5) 
+    clock.tick(snake_speed) 
 
 #pygame.quit()
